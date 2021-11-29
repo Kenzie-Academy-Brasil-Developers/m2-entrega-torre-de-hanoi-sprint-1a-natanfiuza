@@ -24,6 +24,7 @@ function movePiece(currentArr, targetArr){
   if(isMovementValid()){
     const value = currentArr.pop()
     targetArr.push(value)
+    console.log(value)
     
     return true
   }
@@ -35,25 +36,13 @@ function handleInteraction(name){
   arr.clicked.push(name)
 
   if(arr.clicked.length > 1){
-    movePiece(arr[arr.clicked[0]], arr[arr.clicked[1]])
+    const moved = movePiece(arr[arr.clicked[0]], arr[arr.clicked[1]])
+
+    moved ? createPiece() : undefined
+    
     arr.clicked = new Array()
   }
 }
-
-// function createDOM(){
-//   const target = document.querySelector("tbody")
-//   const tr = document.createElement("tr")
-
-//   const templateRow = `
-//     <td>1</td>
-//     <td>2</td>
-//     <td>3</td>
-//   `
-
-//   tr.innerHTML = templateRow
-
-//   target.appendChild(tr)
-// }
 
 
 function createDOM() {
@@ -65,27 +54,27 @@ function createDOM() {
 
   let td = tr.insertCell(-1); // Insere uma celula ao final e retorna seu identificador
   td.addEventListener("click", function (e) {
-    // handleInteraction("start")
-    console.log("start");
-    destakPiece("start");
+    handleInteraction("start")
+  //   console.log("start");
+  //   destakPiece("start");
   });
   td.classList.add(`pin1`);
   td.id = "pin1";
 
   td = tr.insertCell(-1); // Insere uma celula ao final e retorna seu identificador
   td.addEventListener("click", function (e) {
-    // handleInteraction("buffer")
-    console.log("buffer");
-    destakPiece("buffer");
+    handleInteraction("buffer")
+    // console.log("buffer");
+    // destakPiece("buffer");
   });
   td.classList.add(`pin2`);
   td.id = "pin2";
 
   td = tr.insertCell(-1); // Insere uma celula ao final e retorna seu identificador
   td.addEventListener("click", function (e) {
-    // handleInteraction("finish")
-    console.log("finish");
-    destakPiece("finish");
+    handleInteraction("finish")
+    // console.log("finish");
+    // destakPiece("finish");
   });
   td.classList.add(`pin3`);
   td.id = "pin3";
@@ -94,27 +83,31 @@ function createDOM() {
 }
 
 function createPiece() {
-  let pin1 = document.getElementById("pin1");
-  let pin2 = document.getElementById("pin2");
-  let pin3 = document.getElementById("pin3");
+  const pin1 = document.getElementById("pin1");
+  const pin2 = document.getElementById("pin2");
+  const pin3 = document.getElementById("pin3");
 
-  arr.start.forEach(function (e) {
+  pin1.innerHTML = ""
+  pin2.innerHTML = ""
+  pin3.innerHTML = ""
+
+  arr.start.forEach(function (e, i) {
     let piece = document.createElement("div");
     piece.id = `piece_${e}`;
-    piece.classList.add(`piece${e}`);
+    piece.classList.add(`piece${i}`);
     pin1.appendChild(piece);
   });
-  arr.buffer.forEach(function (e) {
+  arr.buffer.forEach(function (e,i) {
     let piece = document.createElement("div");
     piece.id = `piece_${e}`;
-    piece.classList.add(`piece${e}`);
-    pin1.appendChild(piece);
+    piece.classList.add(`piece${i}`);
+    pin2.appendChild(piece);
   });
-  arr.finish.forEach(function (e) {
+  arr.finish.forEach(function (e,i) {
     let piece = document.createElement("div");
     piece.id = `piece_${e}`;
-    piece.classList.add(`piece${e}`);
-    pin1.appendChild(piece);
+    piece.classList.add(`piece${i}`);
+    pin3.appendChild(piece);
   });
 }
 
