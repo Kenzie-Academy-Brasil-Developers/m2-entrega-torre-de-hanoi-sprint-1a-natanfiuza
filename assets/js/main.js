@@ -2,7 +2,7 @@ const arr = {
   start: [0, 1, 2, 3],
   buffer:new Array(),
   finish: new Array(),
-  clicked = new Array()
+  clicked: new Array()
 }
 
 function movePiece(currentArr, targetArr){
@@ -13,9 +13,10 @@ function movePiece(currentArr, targetArr){
   const target = targetArr[targetArrLastIndex]
 
   const isMovementValid = () => {
+    if(currentArr === targetArr) return false
     if(currentArrLastIndex === -1) return false
     if(targetArrLastIndex === -1) return true
-    if(target > current) return true
+    if(target < current) return true
 
     return false
   }
@@ -23,8 +24,12 @@ function movePiece(currentArr, targetArr){
   if(isMovementValid()){
     const value = currentArr.pop()
     targetArr.push(value)
-
+    console.log(value)
+    
     return true
+  }else{
+    console.log("FUCKED")
+    
   }
 
   return false
@@ -34,7 +39,7 @@ function handleInteraction(name){
   arr.clicked.push(name)
 
   if(arr.clicked.length > 1){
-    movePiece(arr.clicked[0], arr.clicked[1])
+    movePiece(arr[arr.clicked[0]], arr[arr.clicked[1]])
     arr.clicked = new Array()
   }
 }
