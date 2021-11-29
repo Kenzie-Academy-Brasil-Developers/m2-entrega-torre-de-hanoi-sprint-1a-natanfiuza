@@ -1,10 +1,9 @@
 const arr = {
   start: [0, 1, 2, 3],
   buffer:new Array(),
-  finish: new Array()
+  finish: new Array(),
+  clicked = new Array()
 }
-
-let clicked = new Array()
 
 function movePiece(currentArr, targetArr){
   const currentArrLastIndex = currentArr.length - 1
@@ -31,17 +30,14 @@ function movePiece(currentArr, targetArr){
   return false
 }
 
-// function handleClick(e){
-//   const name = "oi"
-  
-//   if(clicked.length == 2){
-//     movePiece(arr[0],arr)
-//     clicked = new Array()
-//   }
-//   else{
+function handleInteraction(name){  
+  arr.clicked.push(name)
 
-//   }
-// }
+  if(arr.clicked.length > 1){
+    movePiece(arr.clicked[0], arr.clicked[1])
+    arr.clicked = new Array()
+  }
+}
 
 // function createDOM(){
 //   const target = document.querySelector("tbody")
@@ -65,5 +61,5 @@ function movePiece(currentArr, targetArr){
 
 // init()
 
-console.log(movePiece(arr.start, arr.buffer))
-console.log(arr)
+// console.log(movePiece(arr.start, arr.buffer))
+// console.log(arr)
