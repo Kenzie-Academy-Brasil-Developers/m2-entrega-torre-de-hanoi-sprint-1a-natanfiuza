@@ -24,12 +24,8 @@ function movePiece(currentArr, targetArr){
   if(isMovementValid()){
     const value = currentArr.pop()
     targetArr.push(value)
-    console.log(value)
     
     return true
-  }else{
-    console.log("FUCKED")
-    
   }
 
   return false
