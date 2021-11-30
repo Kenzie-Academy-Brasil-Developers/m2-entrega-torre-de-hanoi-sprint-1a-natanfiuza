@@ -1,3 +1,5 @@
+import { appendModal } from "./modal.js"
+
 class CreateElements{
   constructor(height){
     this.height = height
@@ -160,7 +162,7 @@ class GameLogic{
     const newFinishTower = document.querySelector(".tower2")
 
     if(newFinishTower.children.length === this.pieces.length){
-      alert("You won!")
+      appendModal(true)
     }
   }
 
