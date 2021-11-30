@@ -64,34 +64,7 @@ function createDOM() {
       destakPiece();
     });
   }
-  /*
-  let td = tr.insertCell(-1); // Insere uma celula ao final e retorna seu identificador
-  td.addEventListener("click", function (e) {
-    handleInteraction("start")
-  //   console.log("start");
-  //   destakPiece("start");
-  });
-  td.classList.add(`pin1`);
-  td.id = "pin1";
-
-  td = tr.insertCell(-1); // Insere uma celula ao final e retorna seu identificador
-  td.addEventListener("click", function (e) {
-    handleInteraction("buffer")
-    // console.log("buffer");
-    // destakPiece("buffer");
-  });
-  td.classList.add(`pin2`);
-  td.id = "pin2";
-
-  td = tr.insertCell(-1); // Insere uma celula ao final e retorna seu identificador
-  td.addEventListener("click", function (e) {
-    handleInteraction("finish")
-    // console.log("finish");
-    // destakPiece("finish");
-  });
-  td.classList.add(`pin3`);
-  td.id = "pin3";
-  */
+  
   createPiece();
 }
 
