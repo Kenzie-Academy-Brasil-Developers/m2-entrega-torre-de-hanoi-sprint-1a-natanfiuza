@@ -1,102 +1,63 @@
 /*
   Projeto: Torre de Hanoi 
   Since: 2021-11-29
-
 */
 
 :root {}
 
 body {}
 
-.towers {
-    height: 120px;
-    width: 300px;
-
-}
+/* .towers {
+  width: 300px;
+} */
 
 tbody {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: center;
-    justify-content: space-between;
-    align-items: center;
-}
-tr {
-    display: flex;
-}
-td {
-    display: flex;
-    border: 14px solid transparent;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    align-content: space-between;
-    align-items: center;
-    justify-content: flex-end;
-    padding-bottom: 15px;
-    
-
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.pin1 {
-    width: 200px;
-    height: 400px;
-    background-image: url("../../assets/img/pin1.png");
-    background-repeat: no-repeat;
-    background-position-y: 42px;
+.tower {
+  display: flex;
+  border: 14px solid transparent;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-content: space-between;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+}
+.towerContainer{
+  display: flex;
 }
 
-.pin2 {
-    width: 200px;
-    height: 400px;
-    background-image: url("../../assets/img/pin2.png");
-    background-repeat: no-repeat;
-    background-position-y: 42px;
+.tower{
+  width: 200px;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-position-y: 42px;
 }
 
-.pin3 {
-    width: 200px;
-    height: 400px;
-    background-image: url("../../assets/img/pin3.png");
-    background-repeat: no-repeat;
-    background-position-y: 42px;
+.tower0 {
+  background-image: url("../../assets/img/pin1.png");
 }
 
-.piece0 {
-    background-color: blue;
-    border-top: 1px solid black;
-    border-radius: 13px;
-    width: 100px;
-    height: 30px;
-    margin-bottom: 2px;
+.tower1 {
+  background-image: url("../../assets/img/pin2.png");
 }
 
-.piece1 {
-    background-color: rgb(85, 41, 85);
-    border-top: 1px solid black;
-    border-radius: 13px;
-    width: 120px;
-    height: 30px;
-    margin-bottom: 2px;
-    
+.tower2 {
+  background-image: url("../../assets/img/pin3.png");
 }
 
-.piece2 {
-    background-color: rgb(12, 104, 58);
-    border-top: 1px solid black;
-    border-radius: 13px;
-    width: 140px;
-    height: 30px;
-    margin-bottom: 2px;
-    
-}
-
-.piece3 {
-    background-color: rgb(170, 32, 32);
-    border-top: 1px solid black;
-    border-radius: 13px;
-    width: 160px;
-    height: 30px
+.piece {
+  border-top: 1px solid black;
+  border-radius: 13px;
+  height: 30px;
+  margin-bottom: 2px;
 }
 
 .destak {

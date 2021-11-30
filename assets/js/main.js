@@ -1,5 +1,6 @@
 const arr = {
-  start: [0, 1, 2, 3],
+  reset: [0, 1, 2, 3],
+  start: new Array(),
   buffer: new Array(),
   finish: new Array(),
   clicked: new Array(),
@@ -32,94 +33,123 @@ function movePiece(currentArr, targetArr) {
 }
 
 function handleInteraction(name) {
+  const increaseMoves = () => {
+    const moveSpan = document.querySelector("#moves")
+    
+    moveSpan.innerHTML = Number(moveSpan.innerHTML) + 1
+  }
+  
   arr.clicked.push(name);
 
   if (arr.clicked.length > 1) {
     const moved = movePiece(arr[arr.clicked[0]], arr[arr.clicked[1]]);
 
     moved ? createPiece() : undefined;
+    moved ? increaseMoves() : undefined;
 
     arr.clicked = new Array();
   } else {
     destakPiece(name);
   }
+
+  checkIfWon()
 }
 
 function createDOM() {
-  const table = document.getElementById("towers");
-
-  table.innerHTML = "";
-
-  let tr = table.insertRow(-1); // Insere uma linha
-
+  const section = document.getElementById("towers")
+  
   for (let i = 1; i < 4; i++) {
-    let td = tr.insertCell(-1); // Insere uma celula ao final e retorna seu identificador
+    const td = tr.insertCell(-1); // Insere uma celula ao final e retorna seu identificador
 
     td.classList.add(`pin${i}`);
     td.id = `pin${i}`;
     td.addEventListener("click", function (e) {
       handleInteraction(i == 1 ? "start" : i == 2 ? "buffer" : "finish");
-      console.log(arr);
       createPiece();
       destakPiece();
     });
+
+    section.appendChild(td)
   }
   
   createPiece();
 }
 
-function createPiece() {
-  let pin1 = document.getElementById("pin1");
-  let pin2 = document.getElementById("pin2");
-  let pin3 = document.getElementById("pin3");
-  pin1.innerHTML = "";
-  pin2.innerHTML = "";
-  pin3.innerHTML = "";
-  arr.start.forEach(function (e) {
-    let piece = document.createElement("div");
-    piece.id = `piece_${e}`;
-    piece.classList.add(`piece${e}`);
-    pin1.appendChild(piece);
-  });
-  arr.buffer.forEach(function (e) {
-    let piece = document.createElement("div");
-    piece.id = `piece_${e}`;
-    piece.classList.add(`piece${e}`);
-    pin2.appendChild(piece);
-  });
-  arr.finish.forEach(function (e) {
-    let piece = document.createElement("div");
-    piece.id = `piece_${e}`;
-    piece.classList.add(`piece${e}`);
-    pin3.appendChild(piece);
-  });
+function resetDestak(){
   document.getElementById("piece_0").classList.remove("destak");
   document.getElementById("piece_1").classList.remove("destak");
   document.getElementById("piece_2").classList.remove("destak");
   document.getElementById("piece_3").classList.remove("destak");
 }
 
+
+function resetGame(){
+  const resetMoves = () =>{
+    const moveSpan = document.querySelector("#moves")
+    moveSpan.innerHTML = 0
+  }
+
+  const table = document.getElementById("towers")
+  const tbody = document.getElementsByTagName("tbody")[0].innerHTML = ""
+  tbody ? table.removeChild(tbody) : undefined
+
+  resetMoves()
+
+}
+
+function createPiece() {
+  const pin1 = document.getElementById("pin1");
+  const pin2 = document.getElementById("pin2");
+  const pin3 = document.getElementById("pin3");
+  
+  pin1.innerHTML = "";
+  pin2.innerHTML = "";
+  pin3.innerHTML = "";
+
+  const create = (index, element) => {
+    const piece = document.createElement("div");
+    piece.id = `piece_${index}`;
+    piece.classList.add(`piece${index}`);
+    element.appendChild(piece);
+  }
+  
+  arr.start.forEach( (e) => {
+    create(e, pin1)
+  });
+  arr.buffer.forEach( (e) => {
+    create(e, pin2)
+  });
+  arr.finish.forEach( (e) => {
+    create(e,pin3)
+  });
+ 
+  resetDestak()
+}
+
 function destakPiece() {
-  document.getElementById("piece_0").classList.remove("destak");
-  document.getElementById("piece_1").classList.remove("destak");
-  document.getElementById("piece_2").classList.remove("destak");
-  document.getElementById("piece_3").classList.remove("destak");
+  resetDestak()
 
   if (arr.clicked.length > 0) {
     if (arr[arr.clicked[0]].length > 0) {
-      let piece = document.getElementById(`piece_${arr[arr.clicked[0]][0]}`);
+      const piece = document.getElementById(`piece_${arr[arr.clicked[0]][0]}`);
       piece.classList.add("destak");
     }
   }
 }
 
-// function init(){
-//   // createDOM()
+function checkIfWon(){
+  if(arr.finish.length === arr.reset.length){
+    alert("You win!")
+  }
+}
 
-// }
 
-// init()
+function init(){
+  arr.start = [...arr.reset]
 
-// console.log(movePiece(arr.start, arr.buffer))
-// console.log(arr)
-createDOM();
+  resetGame()
+  createDOM();
+}
+
+init()
+

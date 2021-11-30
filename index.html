@@ -21,13 +21,21 @@
   <body>
     <!-- Conteúdo da Página -->
     <main>
-      <table id="towers">
-  
-      </table>
+      <section id="towers" class="towerContainer">
+      </section>
+      <button onclick="gameLogic.resetGame()">Reset</button>
+      <p>Moves:<span id="moves">0</span></p>
+      <select name="amount" id="amount">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
     </main>
     <footer>
        
     </footer>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/newMain.js"></script>
   </body>
 </html>
