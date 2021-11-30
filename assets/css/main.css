@@ -96,11 +96,19 @@ td {
     border-top: 1px solid black;
     border-radius: 13px;
     width: 160px;
-    height: 30px
+    height: 30px;
+   
 }
 
+.piece4 {
+    background-color: rgb(82, 82, 82);
+    border-top: 1px solid black;
+    border-radius: 13px;
+    width: 180px;
+    height: 30px
+}
 .destak {
-    transform: rotate(5deg);    
+    transform: rotate(3deg);    
 }
 
 /* ANIMAÇÂO BALANÇAR */
