@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+.blur{
+  filter: blur(20px);
+}
+
+.modal--container{
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  
+  height: 100%;
+  width: 100%;
+
+  align-items: center;
+  justify-content: center;
+
+  /* filter: blur(20px); */
+  background-color: #8d8d8d7d;
+}
+
+.modal--white-div{
+  width:80%;
+  
+  max-width: 650px;
+  height:90%;
+  min-height: 450px;
+  max-height: 610px;
+
+  border-radius: 50px;
+  text-align: center;
+
+  background-color: rgba(255, 255, 255, 0.781);
+}
+
+.modal--white-div .modal--message{
+  margin-top: 50px;
+  font-family: "Permanent Marker", sans-serif;
+  font-size: 32px;
+  color: black;
+}
+
+.modal--white-div .modal--img{
+  margin-top: 0;
+  margin-bottom: 0;
+  /* margin: uto; */
+
+  /* width:300px; */
+  width:70%;
+  max-width: 300px;
+  /* display:none; */
+
+}
+
+.modal--white-div .modal--button{
+  display: block;
+  /* width: 120px; */
+  width: 30%;
+  height: 66px;
+
+  min-height: 0;
+  min-width: 75px;
+  max-width: 130px;
+
+  border-radius: 20px;
+  
+  margin: 0;
+  margin-left: auto;
+  margin-right: 40px;
+
+  background-color: white;
+
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 38px;
+  border: 3px transparent solid;
+}
+
+.modal--white-div .modal--button.modal--button-loser{
+  color:#F24A4A;
+  border-color: #F24A4A;
+}
+.modal--white-div .modal--button.modal--button-winner{
+  color:#74F048;
+  border-color: #74F048;
+}
+
+@media (min-width:800px){
+  .modal--white-div .modal--img{
+  margin: 5% auto;
+  }
+}
