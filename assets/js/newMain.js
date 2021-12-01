@@ -1,12 +1,11 @@
-/**
- * Cria e adiciona no documento todos os elementos
- *
- */
-class CreateElements {
-  constructor(height) {
-    this.height = height;
-    this.pieces = [];
-    this.towerElements = [];
+import { appendModal } from "./modal.js"
+
+class CreateElements{
+  constructor(height){
+    this.height = height
+    this.pieces = []
+    this.towerElements = []
+    
   }
   /**
    * Cria os elementos das torres
@@ -126,6 +125,7 @@ class GameLogic {
       // Caso o movimento seja valido incrementa o contador de movimentos
       isValid ? this.increaseMovesCounter() : undefined;
       isValid ? targetTower.firstChild.classList.add("shakePiece") : undefined;
+      
       this.towersToSwap = new Array();
       this.contrastPiece();
     } else {
@@ -202,8 +202,18 @@ class GameLogic {
   doPlayerWon() {
     const newFinishTower = document.querySelector(".tower2");
 
-    if (newFinishTower.children.length === this.pieces.length) {
-      alert("You won!");
+    this.pieces.forEach( piece => {
+      target.appendChild(piece.element)
+    })
+    
+    this.resetCounter()
+  }
+
+  doPlayerWon(){
+    const newFinishTower = document.querySelector(".tower2")
+
+    if(newFinishTower.children.length === this.pieces.length){
+      appendModal(true)
     }
   }
 
@@ -256,7 +266,7 @@ createElements.appendPieces();
 const gameLogic = new GameLogic(towers, pieces);
 gameLogic.addListeners();
 
-const btnReset = document.getElementById("btnReset");
+const btnReset = document.getElementById("resetButton");
 
 btnReset.addEventListener("click", () => {
   gameLogic.resetGame();

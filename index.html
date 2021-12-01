@@ -17,25 +17,39 @@
       media="screen"
       href="assets/css/main.css"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="assets/css/modal.css"
+    />
   </head>
   <body>
     <!-- Conteúdo da Página -->
     <main>
+      <section class="gameSettings">
+        <p>Movimentos:<span id="moves">0</span></p>
+        <p>Quantidade de peças:
+          <span>
+            <select name="amount" id="amount">
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </span>
+        </p>
+        
+        <button id="resetButton">Reset</button>
+      </section>
+      
       <section id="towers" class="towerContainer">
       </section>
-      <button id="btnReset">Reset</button>
-      <p>Moves:<span id="moves">0</span></p>
-      <select name="amount" id="amount">
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-      </select>
     </main>
     <footer>
        
     </footer>
-    <script src="assets/js/newMain.js"></script>
+    <script type="module" src="assets/js/newMain.js"></script>
   </body>
 </html>
