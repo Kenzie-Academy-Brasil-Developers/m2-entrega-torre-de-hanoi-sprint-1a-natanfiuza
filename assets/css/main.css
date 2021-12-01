@@ -3,24 +3,33 @@
   Since: 2021-11-29
 */
 
-:root {}
-
-body {}
-
-/* .towers {
-  width: 300px;
-} */
-
-tbody {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-content: center;
-  justify-content: space-between;
-  align-items: center;
+body{
+  background-color: #161616;
+  color: white;
 }
 
-.tower {
+.gameSettings{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.gameSettings button{
+  display: block;
+  margin:0 auto;
+  width: 100px;
+}
+
+.towerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.tower{
   display: flex;
   border: 14px solid transparent;
   flex-wrap: nowrap;
@@ -29,16 +38,12 @@ tbody {
   align-items: center;
   justify-content: flex-end;
   padding-bottom: 10px;
-}
-.towerContainer{
-  display: flex;
-}
 
-.tower{
   width: 200px;
   height: 400px;
   background-repeat: no-repeat;
   background-position-y: 42px;
+  /* background-size: 100px; */
 }
 
 .tower0 {
@@ -60,33 +65,53 @@ tbody {
   margin-bottom: 2px;
 }
 
-.destak {
-    transform: rotate(5deg);    
-}
 
 /* ANIMAÇÂO BALANÇAR */
 .balancar {
-    animation: shake 1.1s cubic-bezier(.36,.07,.19,.97) both;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    perspective: 1000px;
-    margin-bottom: 20px;
+  animation: shake 1.1s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  margin-bottom: 20px;
+}
+
+@media (min-width:800px){
+  .gameSettings{
+    align-items: flex-start;
   }
 
-@keyframes shake {
-    10%, 90% {
-      transform: translate3d(-1px, 0, 0);
-    }
-    
-    20%, 80% {
-      transform: translate3d(2px, 0, 0);
-    }
-  
-    30%, 50%, 70% {
-      transform: translate3d(-4px, 0, 0);
-    }
-  
-    40%, 60% {
-      transform: translate3d(4px, 0, 0);
-    }
+  .gameSettings button{
+    margin: 0;
   }
+
+  .towerContainer{
+    flex-direction: row;
+  }
+
+  .tower {
+    
+  }
+
+  .destak {
+    transform: rotate(5deg);    
+  }
+
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}

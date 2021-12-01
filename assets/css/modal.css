@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
-main.blur, header.blur{
+.blur{
   filter: blur(20px);
 }
 
